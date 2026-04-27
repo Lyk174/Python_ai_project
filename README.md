@@ -1,3 +1,4 @@
+# 请配合前端文件：https://github.com/Lyk174/frontend
 # 进虚拟环境：venv312\Scripts\Activate.ps1
 # 下载依赖文件：pip install -r requirements.txt
 # chroma run --path ./chroma_db --host 0.0.0.0 --port 8001
