@@ -197,6 +197,8 @@ class RAGService:
         os.makedirs(persist_dir, exist_ok=True)
 
         os.environ.setdefault("HF_HUB_OFFLINE", "1")
+        os.environ.setdefault("TRANSFORMERS_OFFLINE", "1")
+        local_model_path = "/root/.cache/huggingface/hub/models--BAAI--bge-small-zh/snapshots"
         self.embedding_model = HuggingFaceEmbeddings(
             model_name="BAAI/bge-small-zh",
             model_kwargs={'device': 'cpu'},
@@ -204,8 +206,8 @@ class RAGService:
         )
 
         self._client = chromadb.HttpClient(
-            host="localhost",
-            port=8001,
+            host="chroma",
+            port=8000,
             settings=Settings(anonymized_telemetry=False)
         )
         # 初始化 vectorstore
